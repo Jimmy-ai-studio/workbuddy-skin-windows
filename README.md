@@ -18,6 +18,10 @@
 
 不想要了：双击 `恢复原样.bat`，或直接把 WorkBuddy 关掉再正常打开。
 
+**你上传的图会自动保存。** WorkBuddy 的「我的主题」只有一个槽位，传第二张图第一张就没了；
+换肤后会在后台盯着这个槽位，你每传一张新图，几秒内就自动存成一个独立主题，
+之后都能在「内置主题」列表里切回去。主题都放在 `mythemes\`，整个文件夹复制走就是备份。
+
 > ⚠️ 两件必须知道的事：**每次重启 WorkBuddy 都要重新双击一次**（皮肤是内存里的，不支持常驻）；
 > **用完请把 WorkBuddy 关掉再正常打开一次**，这会关闭换肤期间开启的调试端口。详见下方[安全须知](#-安全须知请务必读完)。
 
@@ -46,6 +50,7 @@
 | 2 | WorkBuddy 靠环境变量 `WORKBUDDY_REMOTE_DEBUGGING_PORT` 开调试端口，且只能在启动时生效 | `scripts/relaunch-with-skin.ps1` 带变量重启并等待端口 |
 | 3 | `target-classifier.mjs` 硬编码 macOS bundle 路径 `/WorkBuddy.app/Contents/Resources/...`，Windows 的 renderer 一律判为 `unknown` → `NO_MAIN_RENDERER` | `patches/patch-win-renderer.mjs` 增加 Windows 路径形态，保留全部安全校验 |
 | 4 | 内联超大图片：2.6MB PNG 转 base64 后约 3.6MB，超出 Chromium 单条 CSS 声明上限，**整条 `background` 被静默丢弃**（样式表照常解析、`installed: true` 照常返回） | 压到 400KB 以内即可；官方「+ 自定义图片」入口会自动压成 WebP 0.8，不受影响 |
+| — | 上传的图只存在 localStorage 单槽位，传第二张会永久覆盖第一张 | `wb-archive-theme.mjs --watch` 后台监听槽位指纹，变化即落盘为独立主题 |
 | 5 | WorkBuddy 5.5.x 把 `.wb-home-page` 改名为 `.wb-home-route`，上游透明规则全部失配；且原生外观主题注入 `:root .wb-home-route {...!important}`（特异性 0,2,0），压过单类选择器 | `patches/patch-wb55.mjs` 提升到 `:root:root`（0,3,0）并置空 `--wb-home-bg-fallback` |
 
 第 4、5 条**与平台无关**——macOS 上换一张 2.6MB 的图同样会静默失败，5.5.x 的类名变更同样会让原生主题盖住皮肤。

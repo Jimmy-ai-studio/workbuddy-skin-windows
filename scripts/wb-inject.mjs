@@ -26,7 +26,7 @@ const args = process.argv.slice(2);
 const repoRoot = args[0];
 if (!repoRoot) { console.error("usage: node wb-inject.mjs <repoRoot> [themeId] [--port N] [--check]"); process.exit(64); }
 const positional = args.slice(1).filter((a) => !a.startsWith("--"));
-const themeId = positional[0] ?? "saint-gold";
+const themeId = positional[0] ?? "miku-488137";
 const portIdx = args.indexOf("--port");
 const port = portIdx >= 0 ? Number(args[portIdx + 1]) : 9342;
 const checkOnly = args.includes("--check");

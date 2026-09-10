@@ -16,7 +16,7 @@
     .\relaunch-with-skin.ps1 -Theme saint-pegasus
 #>
 param(
-  [string]$Theme   = "saint-gold",
+  [string]$Theme   = "miku-488137",
   [int]$Port       = 9342,
   [string]$Root    = "$PSScriptRoot\..\heige-codex-skin-studio-main",
   [string]$Exe     = "",
@@ -101,3 +101,25 @@ Write-Host "CDP up."
 $injectArgs = @((Join-Path $PSScriptRoot 'wb-inject.mjs'), $Root, $Theme, '--port', "$Port")
 if (-not $PSBoundParameters.ContainsKey('Theme')) { $injectArgs += '--prefer-stored' }
 & $NodeExe @injectArgs
+
+# --- keep uploaded photos ---
+# The upload slot holds one image; a second upload overwrites the first. Archive
+# whatever is in there now, then leave a small watcher running so anything the
+# user uploads during this session is saved the moment it appears. The watcher
+# polls a short fingerprint (not the image) and exits on its own once WorkBuddy
+# closes, so nothing is left behind.
+$archiveDir = Join-Path $PSScriptRoot '..\themes'
+if (Test-Path $archiveDir) {
+  $archiver = Join-Path $PSScriptRoot 'wb-archive-theme.mjs'
+  & $NodeExe $archiver $archiveDir --port $Port
+
+  # drop any watcher left over from a previous run
+  Get-CimInstance Win32_Process -Filter "Name='node.exe'" -ErrorAction SilentlyContinue |
+    Where-Object { $_.CommandLine -and $_.CommandLine -like '*wb-archive-theme*--watch*' } |
+    ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }
+
+  Start-Process -FilePath $NodeExe `
+    -ArgumentList @($archiver, $archiveDir, '--port', "$Port", '--watch') `
+    -WindowStyle Hidden
+  Write-Host "watching for uploads (auto-saves new pictures)"
+}
