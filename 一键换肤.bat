@@ -8,10 +8,15 @@ echo     WorkBuddy 换肤 - 双击即可
 echo   ============================================
 echo.
 echo   注意：这会关闭并重新打开 WorkBuddy。
-echo   请先保存正在进行的任务，然后按任意键继续。
+echo   请先保存 WorkBuddy 里正在进行的任务。
 echo.
-pause >nul
+echo   -------- 准备好了就按一下键盘 --------
+echo.
+pause
 
+echo.
+echo   正在处理，请等待，不要关闭这个窗口...
+echo.
 powershell -ExecutionPolicy Bypass -NoProfile -File "%~dp0scripts\relaunch-with-skin.ps1"
 
 if errorlevel 1 (
