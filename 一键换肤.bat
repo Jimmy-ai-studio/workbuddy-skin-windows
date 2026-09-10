@@ -1,14 +1,14 @@
 @echo off
-chcp 65001 >nul
-title WorkBuddy 换肤
+chcp 936 >nul
+title WorkBuddy ����
 
 echo.
 echo   ============================================
-echo     WorkBuddy 换肤 - 双击即可
+echo     WorkBuddy ���� - ˫������
 echo   ============================================
 echo.
-echo   注意：这会关闭并重新打开 WorkBuddy。
-echo   请先保存正在进行的任务，然后按任意键继续。
+echo   ע�⣺���رղ����´� WorkBuddy��
+echo   ���ȱ������ڽ��е�����Ȼ�������������
 echo.
 pause >nul
 
@@ -16,12 +16,12 @@ powershell -ExecutionPolicy Bypass -NoProfile -File "%~dp0scripts\relaunch-with-
 
 if errorlevel 1 (
   echo.
-  echo   [失败] 上面是错误信息，把这段截图贴到 GitHub Issue。
+  echo   [ʧ��] �����Ǵ�����Ϣ������ν�ͼ���� GitHub Issue��
 ) else (
   echo.
-  echo   [完成] 去看 WorkBuddy 窗口吧。
+  echo   [���] ȥ�� WorkBuddy ���ڰɡ�
   echo.
-  echo   提示：关掉 WorkBuddy 再正常打开，皮肤就恢复原样了。
+  echo   ��ʾ���ص� WorkBuddy �������򿪣�Ƥ���ͻָ�ԭ���ˡ�
 )
 echo.
 pause

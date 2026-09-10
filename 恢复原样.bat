@@ -1,15 +1,15 @@
 @echo off
-chcp 65001 >nul
-title WorkBuddy æ¢å¤åŸæ ·
+chcp 936 >nul
+title WorkBuddy »Ö¸´Ô­Ñù
 
 echo.
-echo   æ­£åœ¨å…³é—­ WorkBuddy å¹¶æ¢å¤åŸç”Ÿç•Œé¢...
+echo   ÕıÔÚ¹Ø±Õ WorkBuddy ²¢»Ö¸´Ô­Éú½çÃæ...
 echo.
 taskkill /IM WorkBuddy.exe /F >nul 2>&1
 timeout /t 3 >nul
 start "" "%LOCALAPPDATA%\Programs\WorkBuddy\WorkBuddy.exe" 2>nul
 if errorlevel 1 start "" "C:\Program Files\WorkBuddy\WorkBuddy.exe" 2>nul
 if errorlevel 1 start "" "E:\Program Files\WorkBuddy\WorkBuddy.exe" 2>nul
-echo   å·²æ¢å¤ã€‚WorkBuddy æ­£åœ¨é‡æ–°æ‰“å¼€ã€‚
+echo   ÒÑ»Ö¸´¡£WorkBuddy ÕıÔÚÖØĞÂ´ò¿ª¡£
 echo.
 pause
