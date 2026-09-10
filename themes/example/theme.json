@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "example",
+  "name": "示例 / Example",
+  "hero": "hero.jpg",
+  "appearance": "dark",
+  "previewFocus": { "x": 50, "y": 22 },
+  "thumbnailFocus": { "x": 50, "y": 24 },
+  "thumbnailZoom": 105,
+  "colors": {
+    "accent": "#E9BC3F",
+    "secondary": "#2E8B84",
+    "surface": "#0A1028",
+    "text": "#F6EBD0"
+  },
+  "copy": {
+    "brand": "WorkBuddy",
+    "headline": "今天做点什么？"
+  }
+}

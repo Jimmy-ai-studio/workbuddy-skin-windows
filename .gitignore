@@ -1,0 +1,5 @@
+node_modules/
+heige-codex-skin-studio-main/
+runtime/
+*.orig
+*.zip
