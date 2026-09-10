@@ -2,6 +2,27 @@
 
 在 **Windows** 上给腾讯 WorkBuddy 换肤的适配层。
 
+[![latest release](https://img.shields.io/github/v/release/Jimmy-ai-studio/workbuddy-skin-windows?label=%E4%B8%8B%E8%BD%BD&style=for-the-badge)](https://github.com/Jimmy-ai-studio/workbuddy-skin-windows/releases/latest)
+[![downloads](https://img.shields.io/github/downloads/Jimmy-ai-studio/workbuddy-skin-windows/total?style=for-the-badge)](https://github.com/Jimmy-ai-studio/workbuddy-skin-windows/releases)
+[![license](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
+
+## 📦 不懂代码？点这里下载即用
+
+**[→ 前往下载页（Releases）](https://github.com/Jimmy-ai-studio/workbuddy-skin-windows/releases/latest)**，下载 `WorkBuddy-Skin-Windows-v1.0.0.zip`（34MB）。
+
+**三步搞定，不需要安装任何东西**（Node.js 已内置在包里）：
+
+1. 解压 zip
+2. 先打开 WorkBuddy，把手头的活存一下
+3. 双击 **`一键换肤.bat`** → 看到「按一下键盘」时按一下 → 等它跑完
+
+不想要了：双击 `恢复原样.bat`，或直接把 WorkBuddy 关掉再正常打开。
+
+> ⚠️ 两件必须知道的事：**每次重启 WorkBuddy 都要重新双击一次**（皮肤是内存里的，不支持常驻）；
+> **用完请把 WorkBuddy 关掉再正常打开一次**，这会关闭换肤期间开启的调试端口。详见下方[安全须知](#-安全须知请务必读完)。
+
+下面的内容是给开发者看的。
+
 > ## 这不是一个换肤工具
 >
 > 真正做换肤的是 **[HeiGeAi/heige-codex-skin-studio](https://github.com/HeiGeAi/heige-codex-skin-studio)**（MIT）。
@@ -33,7 +54,10 @@
 
 ---
 
-## 快速开始
+## 快速开始（开发者）
+
+> 只想用、不想折腾的，请直接下载 [Release 包](https://github.com/Jimmy-ai-studio/workbuddy-skin-windows/releases/latest)，
+> 里面已包含 Node.js 与打好补丁的上游源码。
 
 **前置条件**
 
